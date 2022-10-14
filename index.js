@@ -45,14 +45,33 @@ class BSTree {
   displayTree(){
     console.log(this.root);
   }
+
+
+  searchNode(value, root=this.root){
+    if(root===null){
+      return false
+    }
+    else if(value === root.value){
+      return true;
+    }else if(value< root.value){
+     return this.searchNode(value, root.left)
+    }else{
+       return this.searchNode(value, root.right)
+    }
+  }
 }
 
 const bst = new BSTree();
-console.log(bst.isEmpty());
+// console.log(bst.isEmpty());
 bst.createNode(20);
 bst.createNode(10);
 bst.createNode(60);
 bst.createNode(80);
+bst.createNode(5);
+bst.createNode(15);
 bst.displayTree()
+console.log(bst.searchNode(5));
+console.log(bst.searchNode(15));
+console.log(bst.searchNode(7));
 
 
