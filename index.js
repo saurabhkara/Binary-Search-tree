@@ -59,6 +59,31 @@ class BSTree {
        return this.searchNode(value, root.right)
     }
   }
+
+
+  preOrder(root){
+    if(root){
+      console.log(root.value);
+      this.preOrder(root.left);
+      this.preOrder(root.right);
+    }
+  }
+
+  InOrder(root){
+    if(root){
+      this.InOrder(root.left);
+      console.log(root.value);
+      this.InOrder(root.right);
+    }
+  }
+
+  postOrder(root){
+    if(root){
+      this.postOrder(root.left);
+      this.postOrder(root.right);
+      console.log(root.value);
+    }
+  }
 }
 
 const bst = new BSTree();
@@ -69,9 +94,15 @@ bst.createNode(60);
 bst.createNode(80);
 bst.createNode(5);
 bst.createNode(15);
+
+// bst.preOrder(bst.root)
+// bst.InOrder(bst.root)
+bst.postOrder(bst.root)
+
+
 bst.displayTree()
-console.log(bst.searchNode(5));
-console.log(bst.searchNode(15));
-console.log(bst.searchNode(7));
+// console.log(bst.searchNode(5));
+// console.log(bst.searchNode(15));
+// console.log(bst.searchNode(7));
 
 
