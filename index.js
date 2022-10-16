@@ -84,6 +84,24 @@ class BSTree {
       console.log(root.value);
     }
   }
+
+  bfsTravesal(root){
+    let treeQueue=[];
+    treeQueue.push(root);
+    while(treeQueue.length){
+      let current =treeQueue.shift();
+      if(current.left){
+        treeQueue.push(current.left);
+      }
+      if(current.right){
+        treeQueue.push(current.right)
+      }
+
+      console.log(current.value);
+    }
+
+  }
+
 }
 
 const bst = new BSTree();
@@ -97,8 +115,9 @@ bst.createNode(15);
 
 // bst.preOrder(bst.root)
 // bst.InOrder(bst.root)
-bst.postOrder(bst.root)
+// bst.postOrder(bst.root)
 
+bst.bfsTravesal(bst.root);
 
 bst.displayTree()
 // console.log(bst.searchNode(5));
