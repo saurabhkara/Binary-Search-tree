@@ -42,64 +42,83 @@ class BSTree {
     }
   }
 
-  displayTree(){
+  displayTree() {
     console.log(this.root);
   }
 
-
-  searchNode(value, root=this.root){
-    if(root===null){
-      return false
-    }
-    else if(value === root.value){
+  searchNode(value, root = this.root) {
+    if (root === null) {
+      return false;
+    } else if (value === root.value) {
       return true;
-    }else if(value< root.value){
-     return this.searchNode(value, root.left)
-    }else{
-       return this.searchNode(value, root.right)
+    } else if (value < root.value) {
+      return this.searchNode(value, root.left);
+    } else {
+      return this.searchNode(value, root.right);
     }
   }
 
-
-  preOrder(root){
-    if(root){
+  preOrder(root) {
+    if (root) {
       console.log(root.value);
       this.preOrder(root.left);
       this.preOrder(root.right);
     }
   }
 
-  InOrder(root){
-    if(root){
+  InOrder(root) {
+    if (root) {
       this.InOrder(root.left);
       console.log(root.value);
       this.InOrder(root.right);
     }
   }
 
-  postOrder(root){
-    if(root){
+  postOrder(root) {
+    if (root) {
       this.postOrder(root.left);
       this.postOrder(root.right);
       console.log(root.value);
     }
   }
 
-  bfsTravesal(root){
-    let treeQueue=[];
+  bfsTravesal(root) {
+    let treeQueue = [];
     treeQueue.push(root);
-    while(treeQueue.length){
-      let current =treeQueue.shift();
-      if(current.left){
+    while (treeQueue.length) {
+      let current = treeQueue.shift();
+      if (current.left) {
         treeQueue.push(current.left);
       }
-      if(current.right){
-        treeQueue.push(current.right)
+      if (current.right) {
+        treeQueue.push(current.right);
       }
 
       console.log(current.value);
     }
+  }
 
+
+  minNode(root=this.root){
+    if(root ===null && root.left === null){
+      return false;
+    }else if(root.value && root.left ===null){
+      console.log(root.value);
+      return root.value;
+    }else{
+      this.minNode(root.left)
+    }
+  }
+
+  maxNode(root=this.root){
+    if(root==null && root.right===null){
+      return false;
+    }else if(root.value && root.right===null){
+      console.log(root.value);
+      return root.value;
+    }else{
+      this.maxNode(root.right)
+    }
   }
 
 }
@@ -117,11 +136,10 @@ bst.createNode(15);
 // bst.InOrder(bst.root)
 // bst.postOrder(bst.root)
 
-bst.bfsTravesal(bst.root);
-
-bst.displayTree()
+// bst.bfsTravesal(bst.root);
+bst.minNode();
+bst.maxNode();
+bst.displayTree();
 // console.log(bst.searchNode(5));
 // console.log(bst.searchNode(15));
 // console.log(bst.searchNode(7));
-
-
